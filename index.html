@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#f3f3ef">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Adnan Yaqoob — Cloud, Kubernetes & 5G Infrastructure Engineer">
-<meta property="og:description" content="Cloud platforms, Kubernetes, GitOps, CI/CD automation, 5G infrastructure and AI platform engineering.">
+<meta property="og:description" content="Cloud platforms, Kubernetes, GitOps, CI/CD automation, enterprise networking, 5G infrastructure and AI platform engineering.">
 <meta property="og:url" content="https://adnanizco.github.io">
 <link rel="canonical" href="https://adnanizco.github.io">
 <style>
@@ -150,8 +150,8 @@
   }
   .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.28fr) minmax(290px, 0.72fr);
-    gap: 64px;
+    grid-template-columns: minmax(0, 1.42fr) minmax(220px, 0.58fr);
+    gap: 56px;
     align-items: center;
   }
   h1 {
@@ -199,36 +199,72 @@
 
   .portrait-card {
     position: relative;
-    border-radius: 28px;
+    width: min(100%, 300px);
+    aspect-ratio: 1 / 1;
+    justify-self: end;
+    border-radius: 50%;
     overflow: hidden;
     background: var(--paper);
-    border: 1px solid var(--line);
-    box-shadow: var(--shadow);
-    aspect-ratio: 4 / 5;
+    border: 1px solid var(--line-dark);
+    box-shadow: 0 16px 44px rgba(18, 20, 24, 0.10);
+  }
+  .portrait-card::after {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(255,255,255,0.64);
+    border-radius: 50%;
+    pointer-events: none;
   }
   .portrait-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 42%;
+    object-position: 50% 35%;
     filter: grayscale(100%) contrast(1.03);
   }
-  .portrait-meta {
-    position: absolute;
-    left: 14px;
-    right: 14px;
-    bottom: 14px;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 12px 14px;
-    background: rgba(255, 255, 255, 0.91);
-    backdrop-filter: blur(12px);
-    border-radius: 14px;
-    font-size: 12px;
-    font-weight: 750;
+  .portrait-meta { display: none; }
+
+  .now-card {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+    padding: 22px 24px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 18px;
   }
-  .portrait-meta span:last-child { color: var(--muted); font-weight: 600; }
+  .now-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent);
+    font: 800 11px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .now-dot {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 5px var(--accent-soft);
+  }
+  .now-card h2 {
+    font-size: clamp(22px, 3vw, 32px);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+  .now-card p {
+    max-width: 850px;
+    margin-top: 9px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .now-card .tags { margin-top: 14px; }
 
   .proof-strip {
     margin-top: 58px;
@@ -400,10 +436,10 @@
     background: var(--paper);
     border: 1px solid var(--line);
     border-radius: 22px;
-    padding: 28px;
+    padding: 26px;
     display: flex;
     flex-direction: column;
-    min-height: 430px;
+    min-height: 405px;
   }
   .project.featured {
     grid-column: span 12;
@@ -584,9 +620,12 @@
       grid-template-columns: 1fr;
     }
     .portrait-card {
-      max-width: 520px;
+      width: min(280px, 78vw);
+      max-width: 100%;
       aspect-ratio: 1 / 1;
+      justify-self: start;
     }
+    .now-card { grid-template-columns: 1fr; }
     .proof-strip { grid-template-columns: repeat(2, 1fr); }
     .proof:nth-child(2) { border-right: 0; }
     .proof:nth-child(-n+2) { border-bottom: 1px solid var(--line-dark); }
@@ -617,7 +656,9 @@
     .nav-links a { padding: 12px 10px; }
     .nav-links a::after { display: none; }
     .hero { padding-top: 48px; }
-    .hero-grid { gap: 38px; }
+    .hero-grid { gap: 32px; }
+    .portrait-card { justify-self: center; }
+    .now-card { padding: 20px; }
     h1 { font-size: clamp(48px, 15vw, 72px); }
     h1 .accent { white-space: normal; }
     .proof { padding: 16px; }
@@ -673,6 +714,7 @@
     <div class="nav-links" id="nav-links">
       <a href="#architecture">Architecture</a>
       <a href="#skills">Skills</a>
+      <a href="#now">Now</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
@@ -707,9 +749,18 @@
       <div class="proof-strip" aria-label="Professional highlights">
         <div class="proof"><b>5+ years</b><span>Telecom, network and cloud engineering</span></div>
         <div class="proof"><b>3 clouds</b><span>AWS, Azure and Google Cloud</span></div>
+        <div class="proof"><b>$250 delivery</b><span>Completed fixed-price Upwork network project</span></div>
         <div class="proof"><b>MSc 2025</b><span>Communication Systems and Networks</span></div>
-        <div class="proof"><b>End to end</b><span>Design, deploy, automate, test and support</span></div>
       </div>
+
+      <aside class="now-card" id="now" aria-labelledby="now-title">
+        <div class="now-label"><span class="now-dot"></span>Current learning & progress</div>
+        <div>
+          <h2 id="now-title">Agentic DevOps, Microsoft Foundry and enterprise AI agents.</h2>
+          <p>Recently completed Microsoft learning paths covering agentic DevOps with Azure DevOps and GitHub Copilot, agent development with GitHub, enterprise agents for Microsoft 365, Microsoft Foundry orchestration and AI-assisted coding.</p>
+          <div class="tags"><span class="tag">Microsoft Foundry</span><span class="tag">GitHub Copilot</span><span class="tag">Azure DevOps</span><span class="tag">Microsoft 365 Agents</span><span class="tag">Agentic AI</span></div>
+        </div>
+      </aside>
     </div>
   </header>
 
@@ -949,8 +1000,8 @@
       <div class="section-top">
         <div class="section-index">03 / Selected work</div>
         <div>
-          <h2>Projects that connect platform design with real operations.</h2>
-          <p class="section-intro">The case studies focus on what was built, why it mattered and how the platform was operated—not only on the list of tools.</p>
+          <h2>Projects that prove the skills behind the tool list.</h2>
+          <p class="section-intro">These case studies combine academic work, client delivery and experience-derived engineering initiatives. Together they show cloud platform design, Kubernetes and GitOps, 5G delivery, automation, networking, security, observability and AI infrastructure.</p>
         </div>
       </div>
 
@@ -964,9 +1015,20 @@
           </div>
           <div class="project-details">
             <div class="detail"><b>Challenge</b><span>Make microservice delivery faster and more repeatable while improving security and visibility for 5G cloud workloads.</span></div>
-            <div class="detail"><b>Approach</b><span>Automated build and deployment stages, added static and dynamic vulnerability scanning, instrumented runtime monitoring and executed performance/load tests.</span></div>
-            <div class="detail"><b>Outcome</b><span>Established a modular foundation for scalable telecom-grade delivery and documented the trade-offs across deployment speed, resource use and security posture.</span></div>
+            <div class="detail"><b>Approach</b><span>Automated build and deployment stages, added static and dynamic vulnerability scanning, instrumented runtime monitoring and executed performance and load tests.</span></div>
+            <div class="detail"><b>Outcome</b><span>Established a modular foundation for scalable telecom-grade delivery and documented trade-offs across deployment speed, resource use and security posture.</span></div>
           </div>
+        </article>
+
+        <article class="project">
+          <span class="project-kicker">Client delivery · Upwork · $250 fixed price</span>
+          <h3>End-to-end wireless network design and predictive site survey</h3>
+          <p>Completed an Ekahau-equivalent predictive wireless survey for a TP-Link access-point deployment, turning coverage and connectivity requirements into an implementation-ready network design and technical documentation package.</p>
+          <div class="project-details" style="margin-top:24px">
+            <div class="detail"><b>Delivery scope</b><span>Wireless planning, access-point design, network implementation guidance and client-facing technical documentation.</span></div>
+            <div class="detail"><b>Commercial result</b><span>One completed Upwork engagement with a recorded fixed-price value of $250.</span></div>
+          </div>
+          <div class="tags"><span class="tag">Predictive survey</span><span class="tag">TP-Link APs</span><span class="tag">Wireless design</span><span class="tag">Network planning</span><span class="tag">Technical documentation</span></div>
         </article>
 
         <article class="project">
@@ -989,6 +1051,39 @@
             <div class="detail"><b>Runtime focus</b><span>Latency, throughput, error rate, active version and workload-based scaling.</span></div>
           </div>
           <div class="tags"><span class="tag">KServe</span><span class="tag">FastAPI</span><span class="tag">Kubernetes</span><span class="tag">Argo CD</span><span class="tag">Istio</span><span class="tag">Prometheus</span><span class="tag">Grafana</span></div>
+        </article>
+
+        <article class="project">
+          <span class="project-kicker">Enterprise networking · End-to-end delivery</span>
+          <h3>Secure multi-site network design and implementation</h3>
+          <p>Converted business connectivity requirements into end-to-end enterprise network solutions, covering technical design, implementation, validation, troubleshooting and managed support.</p>
+          <div class="project-details" style="margin-top:24px">
+            <div class="detail"><b>Network scope</b><span>WAN failover and load balancing, multi-NAT, VLAN segmentation, ACLs, QoS, static routing, MPLS L2/L3 VPNs, IP-routed and PPPoE circuits.</span></div>
+            <div class="detail"><b>Security & access</b><span>NGFW policies, VPN connectivity, application controls, endpoint considerations and wireless access infrastructure.</span></div>
+          </div>
+          <div class="tags"><span class="tag">BGP</span><span class="tag">OSPF</span><span class="tag">MPLS</span><span class="tag">VLAN</span><span class="tag">QoS</span><span class="tag">IPSec</span><span class="tag">Cisco</span><span class="tag">Fortinet</span><span class="tag">Palo Alto</span></div>
+        </article>
+
+        <article class="project">
+          <span class="project-kicker">Cloud AI-RAN · Nokia engineering</span>
+          <h3>OpenShift lab platform and server deployment automation</h3>
+          <p>Supported hands-on platform deployment and integration across Dell, HPE, IBM and NVIDIA server environments, combining Red Hat OpenShift installation, test-line setup and automated validation.</p>
+          <div class="project-details" style="margin-top:24px">
+            <div class="detail"><b>Automation</b><span>Python, Jenkins, Git/Gerrit, Go and Robot Framework workflows for regression testing, build verification and repeatable environment setup.</span></div>
+            <div class="detail"><b>Integration</b><span>Cloud infrastructure validation, vCU/vDU integration and L3 call testing with remote-team support and milestone tracking.</span></div>
+          </div>
+          <div class="tags"><span class="tag">OpenShift</span><span class="tag">Linux</span><span class="tag">Jenkins</span><span class="tag">Python</span><span class="tag">Go</span><span class="tag">Robot Framework</span><span class="tag">Dell / HPE / IBM</span><span class="tag">NVIDIA</span></div>
+        </article>
+
+        <article class="project">
+          <span class="project-kicker">5G Core NPI · Multi-cloud delivery</span>
+          <h3>Cloud-native 5G Core platform deployment and acceptance</h3>
+          <p>Handles end-to-end delivery for 5G Core platform and application work across AWS, Google Cloud and Red Hat OpenShift, from deployment planning through acceptance, support and feature ownership.</p>
+          <div class="project-details" style="margin-top:24px">
+            <div class="detail"><b>Delivery workflow</b><span>Argo CD and GitLab-based delivery, platform deployment, Nokia core application support, QA acceptance testing and controlled feature handling.</span></div>
+            <div class="detail"><b>Operational ownership</b><span>Customer coordination, Jira and Salesforce case handling, Confluence documentation and AI tooling for support tasks.</span></div>
+          </div>
+          <div class="tags"><span class="tag">5G Core</span><span class="tag">AWS</span><span class="tag">Google Cloud</span><span class="tag">OpenShift</span><span class="tag">Argo CD</span><span class="tag">GitLab</span><span class="tag">Acceptance testing</span><span class="tag">AI support tools</span></div>
         </article>
       </div>
     </div>
@@ -1039,7 +1134,7 @@
         <div class="section-index">05 / Profile</div>
         <div>
           <h2>Technical depth with an operations mindset.</h2>
-          <p class="section-intro">My background combines cloud platforms, telecom networks, test automation and customer-facing support. I am most effective in roles where I can own a problem across several layers and move it from diagnosis to a repeatable solution.</p>
+          <p class="section-intro">My background combines cloud platforms, telecom networks, test automation and customer-facing support. I am most effective where I can own a problem across several layers, move it from diagnosis to a repeatable solution and keep extending that capability through current work in agentic DevOps and enterprise AI agents.</p>
         </div>
       </div>
 
@@ -1061,6 +1156,9 @@
         <article class="panel">
           <h3>Selected certifications</h3>
           <div class="credential-list">
+            <div class="credential"><div class="year">NOKIA</div><div><b>Red Hat OpenShift Certification</b><span>OpenShift platform deployment and operations</span></div></div>
+            <div class="credential"><div class="year">NOKIA</div><div><b>Certified Kubernetes Administrator (CKA)</b><span>Kubernetes cluster administration</span></div></div>
+            <div class="credential"><div class="year">COURSERA</div><div><b>Machine Learning Specialization</b><span>DeepLearning.AI / Stanford Online · Andrew Ng</span></div></div>
             <div class="credential"><div class="year">2024</div><div><b>Robot Framework, Jenkins CI & Git</b><span>Professional development</span></div></div>
             <div class="credential"><div class="year">2023–24</div><div><b>DevOps Engineer Learning Path</b><span>KodeKloud</span></div></div>
             <div class="credential"><div class="year">2023</div><div><b>AWS Cloud Technical Essentials</b><span>Amazon Web Services</span></div></div>
